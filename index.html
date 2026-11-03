@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMA tracker presentations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F8FF;--surface:#FFFFFF;--ink:#14213D;--muted:#4A5878;--rule:#CFDCF0;--blue:#1F6FEB;--blue-soft:#E3EEFF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Literata",Georgia,serif}
+h1,h2,.lead,.card .what{font-family:"Atkinson Hyperlegible",system-ui,sans-serif}
+a{color:var(--blue)}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:900px;margin:0 auto;padding:56px 16px 80px}
+h1{font-size:clamp(36px,6vw,58px);line-height:1.05;margin:0 0 16px;letter-spacing:-.01em}
+.lead{font-size:20px;color:var(--muted);max-width:60ch;margin:0}
+.thesis{margin:32px 0 44px;padding:20px 24px;background:var(--surface);border-left:4px solid var(--blue);font-size:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px 22px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--blue)}
+.card h2{font-size:22px;margin:0 0 6px;color:var(--blue)}
+.card p{margin:0}
+.card .what{font-size:14px;color:var(--muted);margin-top:10px}
+h2.sec{font-size:24px;margin:48px 0 12px}
+ul.decks{padding-left:20px}
+ul.decks li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>EMA tracker presentations</h1>
+<p class="lead">Framework, vocabulary and naming for an aggregated N-of-1 app for ME/CFS. Source material for building presentations.</p>
+<p class="thesis">The app is an aggregated N-of-1 data commons that uses EMA for ecological validity and a crosswalk to harmonize user-defined check-ins with CDE-style instruments.</p>
+
+<div class="grid">
+  <a class="card" href="framework/vocabulary.html"><h2>Domain vocabulary</h2><p>Five layers, from why people share data down to how a symptom is measured.</p><p class="what">framework/vocabulary.html</p></a>
+  <a class="card" href="branding/names.html"><h2>App name proposals</h2><p>Shortlist, liked, free, taken and rejected names, with reasons and checks.</p><p class="what">branding/names.html</p></a>
+</div>
+
+<h2 class="sec">Presentations</h2>
+<ul class="decks">
+  <li><a href="presentations/symptom-mapping_fachpublikum/">Symptom mapping, for professionals</a>: PDF and speaker notes</li>
+  <li><a href="presentations/eigene-werte-vergleichbar_betroffene/">Making your own values comparable, for patients</a>: PDF and speaker notes</li>
+</ul>
+</div>
+</body>
+</html>

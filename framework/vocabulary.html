@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domain vocabulary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F8FF; --surface:#FFFFFF; --ink:#14213D; --muted:#4A5878; --rule:#CFDCF0;
+  --blue:#1F6FEB; --blue-soft:#E3EEFF; --sage:#0E8A61; --sage-soft:#DCF7EC;
+  --amber:#B36F00; --amber-soft:#FFF1D6;
+  --l1:#EAF2FF; --l2:#D3E4FF; --l3:#B7D3FF; --l4:#95BEFF; --l5:#6FA6FF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 "Literata",Georgia,serif}
+h1,h2,h3,nav,.meta,.badge,.app span,.lead,.crumbs{font-family:"Atkinson Hyperlegible",system-ui,sans-serif}
+a{color:var(--blue)}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 16px 80px}
+.crumbs{font-size:15px;margin-bottom:28px}
+header h1{font-size:clamp(34px,5vw,52px);line-height:1.08;margin:0 0 14px;letter-spacing:-.01em;font-weight:700}
+.lead{font-size:20px;line-height:1.5;max-width:62ch;color:var(--muted);margin:0}
+.thesis{margin:28px 0 0;padding:18px 22px;background:var(--surface);border-left:4px solid var(--blue);max-width:72ch;font-size:19px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:48px;margin-top:48px;align-items:start}
+@media (max-width:860px){.layout{grid-template-columns:1fr;gap:28px}}
+/* the memorable element: nested layer map, outside → in */
+.map{position:sticky;top:20px}
+@media (max-width:860px){.map{position:static}}
+.map p{font-family:"Atkinson Hyperlegible",sans-serif;font-size:14px;color:var(--muted);margin:0 0 10px}
+.ring{border-radius:14px;padding:10px 10px 10px}
+.ring > a{display:block;font:700 15px/1.3 "Atkinson Hyperlegible",sans-serif;color:var(--ink);text-decoration:none;padding:2px 4px 8px}
+.ring > a small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.ring > a:hover{text-decoration:underline}
+.r1{background:var(--l1)} .r2{background:var(--l2)} .r3{background:var(--l3)} .r4{background:var(--l4)} .r5{background:var(--l5);padding-bottom:12px}
+.legend{margin-top:16px;font-family:"Atkinson Hyperlegible",sans-serif;font-size:14px;color:var(--muted);display:grid;gap:6px}
+section.layer{margin-bottom:56px;scroll-margin-top:20px}
+section.layer > h2{font-size:28px;margin:0 0 4px;display:flex;gap:14px;align-items:baseline}
+section.layer > h2 .n{color:var(--blue);font-size:22px}
+section.layer > p.q{margin:0 0 22px;color:var(--muted);font-family:"Atkinson Hyperlegible",sans-serif}
+.term{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px 22px;margin-bottom:12px;scroll-margin-top:20px}
+.term h3{margin:0 0 6px;font-size:21px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.term h3 code{font:400 13px "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.term p{margin:0 0 8px;max-width:72ch}
+.app{padding-left:14px;border-left:2px solid var(--rule)}
+.app span{font-weight:700;font-size:15px;margin-right:6px}
+.meta{font-size:14px;color:var(--muted);margin:6px 0 0!important}
+.badge{font-size:13px;padding:2px 9px;border-radius:999px;font-weight:700}
+.b-project{background:var(--blue-soft);color:var(--blue)}
+.b-unverified{background:var(--amber-soft);color:var(--amber)}
+.b-verified{background:var(--sage-soft);color:var(--sage)}
+table{border-collapse:collapse;width:100%;background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden;font-size:16px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:"Atkinson Hyperlegible",sans-serif;font-size:15px;background:var(--blue-soft)}
+.tablewrap{overflow-x:auto;margin:6px 0 14px}
+footer{margin-top:40px;font-family:"Atkinson Hyperlegible",sans-serif;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">EMA tracker presentations</a></nav>
+
+<header>
+  <h1>Domain vocabulary</h1>
+  <p class="lead">The terms that turn long explanations into one word. Ordered outside → in: from why people share data down to how a single symptom gets measured.</p>
+  <p class="thesis">The app is an <a href="#V-aggregated-n-of-1">aggregated N-of-1</a> <a href="#V-data-commons">data commons</a> that uses <a href="#V-ema">EMA</a> for <a href="#V-ecological-validity">ecological validity</a> and a <a href="#V-crosswalk">crosswalk</a> to <a href="#V-harmonization">harmonize</a> user-defined check-ins with <a href="#V-cde">CDE</a>-style instruments.</p>
+</header>
+
+<div class="layout">
+<aside class="map" aria-label="Layer map">
+  <p>Each layer sits inside the one above it.</p>
+  <div class="ring r1"><a href="#L1">1 Community<small>why share</small></a>
+    <div class="ring r2"><a href="#L2">2 Study design<small>how it is organized</small></a>
+      <div class="ring r3"><a href="#L3">3 Data collection<small>what comes in</small></a>
+        <div class="ring r4"><a href="#L4">4 Measurement<small>the symptom tree</small></a>
+          <div class="ring r5"><a href="#L5">5 Disease context<small>what is measured</small></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="legend">
+    <div><span class="badge b-project">Project term</span> our own definition</div>
+    <div><span class="badge b-verified">Verified</span> checked against a source</div>
+    <div><span class="badge b-unverified">Unverified</span> check before a slide</div>
+  </div>
+</aside>
+
+<main>
+
+<!-- ============ LAYER 1 ============ -->
+<section class="layer" id="L1" data-layer="1">
+<h2><span class="n">1</span>Community</h2>
+<p class="q">Why should anyone share their data?</p>
+
+<article class="term" id="V-data-commons" data-layer="1" data-origin="standard" data-confidence="verified">
+<h3>Data commons <code>V-data-commons</code></h3>
+<p class="def">A shared, governed pool of data that many contribute to and many may use under common rules.</p>
+<p class="app"><span>In our app</span>Every opted-in check-in flows into one pool that powers both the individual's insights and population-level analysis.</p>
+<p class="meta">Related: <a href="#V-positive-externality">positive externality</a>, <a href="#V-fair">FAIR</a></p>
+</article>
+
+<article class="term" id="V-positive-externality" data-layer="1" data-origin="standard" data-confidence="verified">
+<h3>Positive externality <code>V-positive-externality</code></h3>
+<p class="def">A benefit that an action creates for others without extra cost to the person acting (economics).</p>
+<p class="app"><span>In our app</span>The core of the pitch: you track for yourself, and your data helps the next person at no extra effort.</p>
+</article>
+
+<article class="term" id="V-citizen-science" data-layer="1" data-origin="standard" data-confidence="verified">
+<h3>Citizen science <code>V-citizen-science</code></h3>
+<p class="def">Research conducted with or by members of the public. In health: participatory research, where affected people help shape questions, data and interpretation.</p>
+<p class="app"><span>In our app</span>A DIY answer to underfunded ME/CFS research: patients generate evidence instead of waiting for it.</p>
+</article>
+
+<article class="term" id="V-fair" data-layer="1" data-origin="standard" data-confidence="verified">
+<h3>FAIR <code>V-fair</code></h3>
+<p class="def">Findable, Accessible, Interoperable, Reusable. The widely used principles for research data (Wilkinson et al., 2016).</p>
+<p class="app"><span>In our app</span>The quality bar for the backend and export: data that researchers can actually reuse.</p>
+<p class="meta">Related: <a href="#V-interoperability">interoperability</a></p>
+</article>
+
+<article class="term" id="V-interoperability" data-layer="1" data-origin="standard" data-confidence="verified">
+<h3>Interoperability <code>V-interoperability</code></h3>
+<p class="def">The ability of data from one system to be used by another without manual translation, through shared formats and shared variable definitions.</p>
+<p class="app"><span>In our app</span>Achieved through the crosswalk to standard instruments, not by forcing users onto fixed questionnaires.</p>
+</article>
+
+<article class="term" id="V-federated-analysis" data-layer="1" data-origin="standard" data-confidence="verified">
+<h3>Federated analysis <code>V-federated-analysis</code></h3>
+<p class="def">Analysis that runs where the data lives and returns only aggregate results, so raw data never leaves its source.</p>
+<p class="app"><span>In our app</span>A privacy option for the backend if central pooling of health data turns out to be too sensitive.</p>
+</article>
+</section>
+
+<!-- ============ LAYER 2 ============ -->
+<section class="layer" id="L2" data-layer="2">
+<h2><span class="n">2</span>Study design</h2>
+<p class="q">How do self-experiments become evidence?</p>
+
+<article class="term" id="V-n-of-1" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>N-of-1 trial <code>V-n-of-1</code></h3>
+<p class="def">A trial with one participant who alternates between interventions in a planned sequence, with outcomes measured in each period.</p>
+<p class="app"><span>In our app</span>The unit of work. Each user runs their own experiment.</p>
+</article>
+
+<article class="term" id="V-aggregated-n-of-1" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Aggregated N-of-1 <code>V-aggregated-n-of-1</code></h3>
+<p class="def">A series of N-of-1 trials pooled to estimate both individual and population-level effects.</p>
+<p class="app"><span>In our app</span>The app in two words: personal answers first, shared evidence as a by-product.</p>
+</article>
+
+<article class="term" id="V-crossover" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Crossover design <code>V-crossover</code></h3>
+<p class="def">Each participant receives every condition in sequence, so they serve as their own control.</p>
+<p class="meta">Related: <a href="#V-washout">washout</a>, <a href="#V-carryover">carryover</a></p>
+</article>
+
+<article class="term" id="V-carryover" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Carryover <code>V-carryover</code></h3>
+<p class="def">An effect of a previous intervention that persists into the next period and contaminates its measurement.</p>
+</article>
+
+<article class="term" id="V-washout" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Washout <code>V-washout</code></h3>
+<p class="def">A gap between intervention periods that lets carryover fade before the next condition starts.</p>
+</article>
+
+<article class="term" id="V-baseline" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Baseline (run-in) <code>V-baseline</code></h3>
+<p class="def">A period of measurement without intervention, establishing the person's normal level and variability.</p>
+<p class="app"><span>In our app</span>Needed before any "did it help?" question can be answered.</p>
+</article>
+
+<article class="term" id="V-regression-to-the-mean" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Regression to the mean <code>V-regression-to-the-mean</code></h3>
+<p class="def">Extreme measurements tend to be followed by less extreme ones, regardless of any intervention.</p>
+<p class="app"><span>In our app</span>The classic self-experiment trap: people start a treatment when they feel worst and would have improved anyway. A baseline guards against it.</p>
+</article>
+
+<article class="term" id="V-confounder" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Confounder <code>V-confounder</code></h3>
+<p class="def">A third factor that influences both the intervention and the outcome, creating a false or distorted association.</p>
+<p class="app"><span>In our app</span>Events (infections, exertion, sleep) are logged partly to identify confounders.</p>
+</article>
+
+<article class="term" id="V-rwe" data-layer="2" data-origin="standard" data-confidence="verified">
+<h3>Real-world evidence (RWE) <code>V-rwe</code></h3>
+<p class="def">Evidence derived from data collected outside controlled trials, in everyday life.</p>
+</article>
+</section>
+
+<!-- ============ LAYER 3 ============ -->
+<section class="layer" id="L3" data-layer="3">
+<h2><span class="n">3</span>Data collection</h2>
+<p class="q">What comes in, and how clean is it?</p>
+
+<article class="term" id="V-ema" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>EMA <code>V-ema</code></h3>
+<p class="def">Ecological Momentary Assessment: repeated real-time sampling of symptoms, behaviour and physiology in daily life. Origin: behavioural medicine.</p>
+<p class="app"><span>In our app</span>The chosen term. Covers symptom check-ins, event logs and health-tracker data.</p>
+<p class="meta">Related: <a href="#V-esm">ESM</a>, <a href="#V-sampling-schedules">sampling schedules</a></p>
+</article>
+
+<article class="term" id="V-esm" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>ESM <code>V-esm</code></h3>
+<p class="def">Experience Sampling Method: random prompts that sample momentary experience. Origin: psychology. Largely synonymous with EMA, narrower in scope.</p>
+</article>
+
+<article class="term" id="V-sampling-schedules" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>Signal-, interval- and event-contingent sampling <code>V-sampling-schedules</code></h3>
+<p class="def">The three EMA schedules: prompted at random times (signal), at fixed times (interval), or entered when something happens (event).</p>
+<p class="app"><span>In our app</span>Random check-ins are signal-contingent; therapy and event logs are event-contingent. Competitors (Self-E, StudyMe) only offer interval-contingent daily reminders.</p>
+</article>
+
+<article class="term" id="V-ecological-validity" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>Ecological validity <code>V-ecological-validity</code></h3>
+<p class="def">How well a measurement reflects real-life conditions rather than a lab or clinic setting.</p>
+</article>
+
+<article class="term" id="V-recall-bias" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>Recall bias <code>V-recall-bias</code></h3>
+<p class="def">Systematic distortion when people report past states from memory, e.g. the worst or most recent day dominating a "last two weeks" rating.</p>
+<p class="app"><span>In our app</span>The main problem EMA solves compared with retrospective questionnaires.</p>
+</article>
+
+<article class="term" id="V-respondent-burden" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>Respondent burden <code>V-respondent-burden</code></h3>
+<p class="def">The effort, time and energy a measurement costs the person answering.</p>
+<p class="app"><span>In our app</span>Critical in ME/CFS: answering itself costs energy. Design rule: simplicity beats perfect mapping.</p>
+</article>
+
+<article class="term" id="V-missingness" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>MCAR, MAR, MNAR <code>V-missingness</code></h3>
+<p class="def">Missing completely at random, missing at random (explained by observed data), missing not at random (depends on the missing value itself).</p>
+<p class="app"><span>In our app</span>Skipped check-ins on bad days are MNAR: the gaps themselves carry information and must not be ignored in analysis.</p>
+</article>
+
+<article class="term" id="V-attrition" data-layer="3" data-origin="standard" data-confidence="verified">
+<h3>Adherence and attrition <code>V-attrition</code></h3>
+<p class="def">Adherence: how consistently people follow the protocol. Attrition: how many drop out before the end. The "law of attrition" (Eysenbach, 2005) describes high dropout in digital health.</p>
+</article>
+</section>
+
+<!-- ============ LAYER 4 ============ -->
+<section class="layer" id="L4" data-layer="4">
+<h2><span class="n">4</span>Measurement</h2>
+<p class="q">How does a feeling become a comparable number?</p>
+
+<article class="term" id="V-latent-construct" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Latent construct <code>V-latent-construct</code></h3>
+<p class="def">A quantity that cannot be observed directly, such as fatigue, and is inferred from several observable items.</p>
+<p class="app"><span>In our app</span>The middle nodes of the symptom tree (fatigue, brain fog, sleep, pain, daily functioning).</p>
+</article>
+
+<article class="term" id="V-facet" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Facet <code>V-facet</code></h3>
+<p class="def">A distinguishable sub-dimension of a construct, e.g. physical vs. mental fatigue.</p>
+</article>
+
+<article class="term" id="V-granule" data-layer="4" data-origin="project" data-confidence="verified">
+<h3>Granule <span class="badge b-project">Project term</span> <code>V-granule</code></h3>
+<p class="def">The finest level of the symptom tree: exactly one sensation or capability. 68 granules in 12 sections, each mapped to instrument items.</p>
+</article>
+
+<article class="term" id="V-item" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Item and instrument <code>V-item</code></h3>
+<p class="def">An item is a single question with its response scale. An instrument is a validated set of items with a scoring rule.</p>
+</article>
+
+<article class="term" id="V-pro" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>PRO <code>V-pro</code></h3>
+<p class="def">Patient-reported outcome: a measurement reported directly by the patient, without interpretation by a clinician.</p>
+</article>
+
+<article class="term" id="V-crosswalk" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Crosswalk <span class="badge b-verified">Verified</span> <code>V-crosswalk</code></h3>
+<p class="def">A mapping that translates items or scores of one instrument into another. Established in psychometrics: the PROsetta Stone project produced crosswalk tables linking PROMIS to legacy instruments.</p>
+<p class="app"><span>In our app</span>Exactly what the symptom tree is: user check-ins → granules → instrument items.</p>
+<p class="meta">Related: <a href="#V-harmonization">harmonization</a>, <a href="#V-linking">linking</a>. Source: <a href="https://www.rdocumentation.org/packages/PROsetta/versions/0.4.2">PROsetta R package</a></p>
+</article>
+
+<article class="term" id="V-linking" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Linking and equating <code>V-linking</code></h3>
+<p class="def">Statistical methods (often based on item response theory) that place scores from different instruments on a common scale. Equating is the strict form for interchangeable tests.</p>
+<p class="app"><span>In our app</span>The rigorous future version of the crosswalk, once enough data exists.</p>
+</article>
+
+<article class="term" id="V-harmonization" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Harmonization <code>V-harmonization</code></h3>
+<p class="def">Making data collected with different instruments or definitions comparable for joint analysis.</p>
+</article>
+
+<article class="term" id="V-commensurable" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Commensurable <code>V-commensurable</code></h3>
+<p class="def">Measurable on a common scale, so values can be compared or combined.</p>
+</article>
+
+<article class="term" id="V-cde" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>CDE <span class="badge b-verified">Verified</span> <code>V-cde</code></h3>
+<p class="def">Common Data Element: a standardized variable definition shared across studies. NINDS published ME/CFS CDEs in 2018, classifying instruments as core, supplemental-highly recommended, supplemental or exploratory.</p>
+<p class="app"><span>In our app</span>Anchor for the crosswalk. The DSQ, which the symptom tree already maps to, is a core CDE.</p>
+<p class="meta">Source: <a href="https://www.commondataelements.ninds.nih.gov/sites/nindscde/files/Doc/MECFS/Myalgic_Encephalomyelitis_Chronic_Fatigue_Syndrome_CDE_Highlight_Summary.pdf">NINDS ME/CFS CDE Highlight Summary (2018)</a></p>
+</article>
+
+<article class="term" id="V-ad-hoc-scale" data-layer="4" data-origin="project" data-confidence="verified">
+<h3>Ad hoc scale <span class="badge b-project">Project term</span> <code>V-ad-hoc-scale</code></h3>
+<p class="def">A study-specific, self-built, non-validated scale. Not a scale defined by the user.</p>
+</article>
+
+<article class="term" id="V-construct-validity" data-layer="4" data-origin="standard" data-confidence="verified">
+<h3>Construct validity <code>V-construct-validity</code></h3>
+<p class="def">Whether a measurement actually captures the construct it claims to measure.</p>
+</article>
+
+<h3 id="instruments" style="font-family:'Atkinson Hyperlegible',sans-serif;margin:28px 0 6px">Instruments in the symptom tree</h3>
+<div class="tablewrap">
+<table data-table="instruments">
+<thead><tr><th>Instrument</th><th>What it measures</th><th>NINDS ME/CFS CDE (2018)</th></tr></thead>
+<tbody>
+<tr id="I-dsq"><td>DSQ (DePaul Symptom Questionnaire)</td><td>Frequency and severity of ME/CFS symptoms; supports case definitions</td><td>Core</td></tr>
+<tr id="I-rand36"><td>RAND-36</td><td>Health-related quality of life, 8 domains; freely available counterpart of the SF-36</td><td>SF-36 listed as supplemental; RAND-36 not named</td></tr>
+<tr id="I-bell"><td>Bell CFIDS Disability Scale</td><td>Overall functional ability, 0–100</td><td>Exploratory</td></tr>
+<tr id="I-funcap"><td>FUNCAP</td><td>ME/CFS-specific functional capacity <span class="badge b-unverified">Unverified</span> details</td><td>Not included (published after 2018)</td></tr>
+<tr id="I-pgic"><td>PGIC (Patient Global Impression of Change)</td><td>Self-rated overall change since a reference point</td><td>Not included</td></tr>
+<tr id="I-pem"><td>Core PEM Assessment</td><td>Post-exertional malaise</td><td>Core, not yet in the symptom tree</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============ LAYER 5 ============ -->
+<section class="layer" id="L5" data-layer="5">
+<h2><span class="n">5</span>Disease context</h2>
+<p class="q">What makes ME/CFS hard to measure?</p>
+
+<article class="term" id="V-pem" data-layer="5" data-origin="standard" data-confidence="verified">
+<h3>PEM <code>V-pem</code></h3>
+<p class="def">Post-exertional malaise: worsening of symptoms after physical, cognitive or emotional exertion, often delayed by hours to days. The hallmark symptom of ME/CFS.</p>
+<p class="app"><span>In our app</span>The delay makes it a lagged effect: analysis must look at exertion days before a symptom change, not the same day.</p>
+</article>
+
+<article class="term" id="V-crash" data-layer="5" data-origin="standard" data-confidence="verified">
+<h3>Crash <code>V-crash</code></h3>
+<p class="def">Patient term for a severe PEM episode.</p>
+</article>
+
+<article class="term" id="V-pacing" data-layer="5" data-origin="standard" data-confidence="verified">
+<h3>Pacing and energy envelope <code>V-pacing</code></h3>
+<p class="def">Pacing: managing activity to avoid triggering PEM. Energy envelope: the range of activity a person can sustain without crashing.</p>
+<p class="app"><span>In our app</span>A natural outcome target: helping users find their envelope from their own data.</p>
+</article>
+</section>
+
+</main>
+</div>
+
+<footer>Edit rule: add terms under the right layer, keep the article schema (<code>id</code>, <code>data-layer</code>, <code>data-origin</code>, <code>data-confidence</code>). Last updated 3 Nov 2026.</footer>
+</div>
+</body>
+</html>

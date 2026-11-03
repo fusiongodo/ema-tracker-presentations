@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App name proposals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F8FF; --surface:#FFFFFF; --ink:#14213D; --muted:#4A5878; --rule:#CFDCF0;
+  --blue:#1F6FEB;
+  --s-short:#1F6FEB;  --s-short-bg:#E3EEFF;
+  --s-liked:#0E8A61;  --s-liked-bg:#DCF7EC;
+  --s-free:#5E8A00;   --s-free-bg:#EEF8D6;
+  --s-insp:#8B3FD9;   --s-insp-bg:#F1E6FF;
+  --s-idea:#4A5878;   --s-idea-bg:#EEF2F8;
+  --s-taken:#D61F55;  --s-taken-bg:#FFE3EC;
+  --s-rej:#8F633A;    --s-rej-bg:#F6ECE2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Literata",Georgia,serif}
+h1,h2,h3,.crumbs,.lead,.patch .name,.patch .meta,.keyrow,dt{font-family:"Atkinson Hyperlegible",system-ui,sans-serif}
+a{color:var(--blue)}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 16px 80px}
+.crumbs{font-size:15px;margin-bottom:28px}
+h1{font-size:clamp(34px,5vw,52px);line-height:1.08;margin:0 0 14px;font-weight:700;letter-spacing:-.01em}
+.lead{font-size:20px;line-height:1.5;color:var(--muted);max-width:62ch;margin:0}
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:40px 0 20px}
+.brief div{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px 22px}
+.brief h2{font-size:20px;margin:0 0 8px}
+.brief ul{margin:0;padding-left:20px}
+.brief li{margin-bottom:6px}
+.keyrow{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px;color:var(--muted);margin:32px 0 8px}
+.keyrow span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+section{margin-top:44px}
+section > h2{font-size:26px;margin:0 0 4px}
+section > p{margin:0 0 16px;color:var(--muted);font-family:"Atkinson Hyperlegible",sans-serif;max-width:70ch}
+/* the patchwork: patches stitched edge to edge, colour = status */
+.quilt{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:3px;background:var(--rule);border:3px solid var(--rule);border-radius:14px;overflow:hidden}
+.patch{background:var(--bg);padding:18px 18px 16px;position:relative;border:1px dashed color-mix(in srgb,var(--c) 35%,transparent);margin:3px;border-radius:6px}
+.patch .name{font-size:24px;font-weight:700;color:var(--c);margin:0 0 6px;line-height:1.15;word-break:break-word}
+.patch p{margin:0 0 6px;font-size:16px}
+.patch .risk{color:var(--muted)}
+.patch .meta{font-size:13px;color:var(--muted);margin-top:8px}
+.st-short{--c:var(--s-short);--bg:var(--s-short-bg)}
+.st-liked{--c:var(--s-liked);--bg:var(--s-liked-bg)}
+.st-free{--c:var(--s-free);--bg:var(--s-free-bg)}
+.st-insp{--c:var(--s-insp);--bg:var(--s-insp-bg)}
+.st-idea{--c:var(--s-idea);--bg:var(--s-idea-bg)}
+.st-taken{--c:var(--s-taken);--bg:var(--s-taken-bg)}
+.st-rej{--c:var(--s-rej);--bg:var(--s-rej-bg)}
+.st-short .name{font-size:32px}
+.patch.st-taken .name,.patch.st-rej .name{text-decoration:line-through;text-decoration-thickness:2px}
+footer{margin-top:48px;font-family:"Atkinson Hyperlegible",sans-serif;font-size:14px;color:var(--muted);max-width:80ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">EMA tracker presentations</a></nav>
+
+<h1>App name proposals</h1>
+<p class="lead">Every name considered so far, stitched together. Colour shows status; nothing gets deleted, rejected names move to the bottom with the reason.</p>
+
+<div class="brief">
+  <div id="requirements">
+    <h2>What the name should do</h2>
+    <ul>
+      <li>Speak to the effect on the world, not the feature list: many small data contributions add up to something bigger.</li>
+      <li>Sound smart; evoke shared progress, sharing and science.</li>
+      <li>Make contributing feel small and easy.</li>
+      <li>May also point to self-tracking and personal insight.</li>
+      <li>Ideally contain ME (or CFS, encephalomyelitis): ME reads as both the illness and "me".</li>
+      <li>Inspiration welcome from democracy, teamwork, self-inquiry, mythology, pop culture, cartoons.</li>
+    </ul>
+  </div>
+  <div id="avoid">
+    <h2>What to avoid</h2>
+    <ul>
+      <li>Forest or tribal imagery (roots, woods).</li>
+      <li>"Trial": sounds like an ordeal you have to go through.</li>
+      <li>Names too close to existing apps in the same niche (likelihood of confusion, App Store copycat rule).</li>
+      <li>Purely descriptive names: hard to protect as a brand.</li>
+    </ul>
+  </div>
+  <div id="checking">
+    <h2>How availability is checked</h2>
+    <ul>
+      <li>Web search of store listings: indicative only.</li>
+      <li>Apple: name must be unique; definitive test is entering it in App Store Connect.</li>
+      <li>Google Play: names are not unique, so only search visibility and confusion matter.</li>
+      <li>Trademark: DPMA register and TMview.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="keyrow" aria-label="Status colours">
+  <span style="--c:var(--s-short)">Shortlist</span>
+  <span style="--c:var(--s-liked)">Liked</span>
+  <span style="--c:var(--s-free)">Appears free</span>
+  <span style="--c:var(--s-insp)">Inspiration</span>
+  <span style="--c:var(--s-idea)">Proposed, no verdict yet</span>
+  <span style="--c:var(--s-taken)">Taken</span>
+  <span style="--c:var(--s-rej)">Rejected</span>
+</div>
+
+<section id="shortlist">
+<h2>Shortlist</h2>
+<p>The three best so far (3 Nov 2026).</p>
+<div class="quilt">
+  <article class="patch st-short" id="N-mejority" data-status="shortlist">
+    <div class="name">MEjority</div>
+    <p>Pun on majority: strength in numbers, ME as illness and self.</p>
+    <p class="risk">Not yet checked for availability.</p>
+    <div class="meta">Origin: democracy direction</div>
+  </article>
+  <article class="patch st-short" id="N-patchme" data-status="shortlist">
+    <div class="name">patchME</div>
+    <p>Patchwork of many data points; a patch is a fix; ME/CFS is currently managed through many small interventions that compound into marginal gains.</p>
+    <p class="risk">Risk: "patch" can read as band-aid or quick fix. Not yet checked.</p>
+    <div class="meta">Origin: Jarvis</div>
+  </article>
+  <article class="patch st-short" id="N-study-me" data-status="shortlist">
+    <div class="name">Study ME</div>
+    <p>Study yourself, study the illness.</p>
+    <p class="risk">Risk: StudyMe (HPI Potsdam) is an N-of-1 app in the same niche on Google Play. No iOS version found, so Apple's name check may pass, but spoken the names are identical.</p>
+    <div class="meta">Checked: web search, 3 Nov 2026</div>
+  </article>
+</div>
+</section>
+
+<section id="liked">
+<h2>Liked</h2>
+<div class="quilt">
+  <article class="patch st-liked" id="N-n-plus-1" data-status="liked">
+    <div class="name">n+1</div>
+    <p>Wink at n-of-1, and every user adds +1 to the sample size of the shared study. Former favourite.</p>
+    <p class="risk">No App Store app found. Google Play has "N+1: Next Number" (other category). n+1 is also a US literary magazine. The "+" is awkward in search, URLs and speech.</p>
+    <div class="meta">Checked: web search, 31 Oct 2026</div>
+  </article>
+  <article class="patch st-liked" id="N-meassembly" data-status="liked">
+    <div class="name">MEassembly</div>
+    <p>A gathering or parliament of people with ME; starts with "meas…" as in measure.</p>
+    <p class="risk">Hard to read at first glance; needs clear capitalisation.</p>
+  </article>
+  <article class="patch st-liked" id="N-me-alliance" data-status="liked">
+    <div class="name">ME Alliance</div>
+    <p>Joined forces.</p>
+    <p class="risk">Sounds like an advocacy organisation; ME Association and #MEAction exist.</p>
+  </article>
+  <article class="patch st-liked" id="N-me-ally" data-status="liked">
+    <div class="name">ME ally</div>
+    <p>Warm, friendly companion.</p>
+    <p class="risk">A bit soft, little science.</p>
+  </article>
+  <article class="patch st-liked" id="N-inquireme" data-status="liked">
+    <div class="name">inquireME</div>
+    <p>Self-inquiry, and inquiry into the illness.</p>
+  </article>
+  <article class="patch st-liked" id="N-quorum" data-status="liked">
+    <div class="name">Quorum</div>
+    <p>Enough voices to decide; enough data to reach evidence.</p>
+  </article>
+  <article class="patch st-liked" id="N-piecewise" data-status="liked">
+    <div class="name">Piecewise</div>
+    <p>Piece by piece toward understanding, with a quiet "wise".</p>
+  </article>
+  <article class="patch st-liked" id="N-ensemble" data-status="liked">
+    <div class="name">Ensemble</div>
+    <p>Many small parts, one result; also a statistics and ML term.</p>
+  </article>
+  <article class="patch st-liked" id="N-mosaic" data-status="liked">
+    <div class="name">Mosaic</div>
+    <p>Each tile is small; together they form the picture.</p>
+  </article>
+  <article class="patch st-liked" id="N-mycelium" data-status="liked">
+    <div class="name">Mycelium</div>
+    <p>The underground network that shares nutrients between trees; "MyCelium" reads as personal and collective.</p>
+  </article>
+  <article class="patch st-liked" id="N-tributary" data-status="liked">
+    <div class="name">Tributary</div>
+    <p>Small streams that together become a river.</p>
+  </article>
+</div>
+</section>
+
+<section id="appears-free">
+<h2>Appears free</h2>
+<p>No app found by web search (30 Oct 2026). Not confirmed in App Store Connect.</p>
+<div class="quilt">
+  <article class="patch st-free" id="N-probando" data-status="appears-free"><div class="name">Probando</div><p>From "Proband", the person being tested.</p></article>
+  <article class="patch st-free" id="N-ownsight" data-status="appears-free"><div class="name">Ownsight</div><p>Insight into your own data; curiosity rather than ordeal.</p></article>
+  <article class="patch st-free" id="N-selfprobe" data-status="appears-free"><div class="name">Selfprobe</div><p>Probing yourself.</p></article>
+  <article class="patch st-free" id="N-n-trials" data-status="appears-free"><div class="name">N Trials</div><p>Direct reference to N-of-1 trials.</p><p class="risk">Disliked: "trial" sounds like an ordeal.</p></article>
+</div>
+</section>
+
+<section id="inspiration">
+<h2>Inspiration</h2>
+<p>Probably taken, kept for the ideas they carry.</p>
+<div class="quilt">
+  <article class="patch st-insp" id="N-crossover" data-status="inspiration"><div class="name">Crossover</div><p>The design principle behind N-of-1: you are your own control. Taken as an app name.</p></article>
+  <article class="patch st-insp" id="N-crosswalk" data-status="inspiration"><div class="name">Crosswalk</div><p>The psychometric term for what the symptom tree does: translating between instruments. A crossing everyone uses together.</p></article>
+</div>
+</section>
+
+<section id="ideas">
+<h2>Proposed, no verdict yet</h2>
+<div class="quilt">
+  <article class="patch st-idea" id="N-agora" data-status="idea"><div class="name">Agora</div><p>The public square of ancient Athens; shared space for insight.</p></article>
+  <article class="patch st-idea" id="N-me-census" data-status="idea"><div class="name">ME Census</div><p>Everyone gets counted; literally data collection.</p></article>
+  <article class="patch st-idea" id="N-metropolis" data-status="idea"><div class="name">MEtropolis</div><p>A whole city (polis) of people with ME.</p></article>
+  <article class="patch st-idea" id="N-messemble" data-status="idea"><div class="name">MEssemble</div><p>Wink at "assemble": everyone brings their piece.</p></article>
+  <article class="patch st-idea" id="N-stone-soup" data-status="idea"><div class="name">Stone Soup</div><p>Folk tale: everyone adds one ingredient and it becomes a feast. Public domain.</p></article>
+  <article class="patch st-idea" id="N-delphi" data-status="idea"><div class="name">Delphi</div><p>"Know thyself" at the oracle; the Delphi method pools many judgments. Likely taken alone; "Delphi ME" possible.</p></article>
+  <article class="patch st-idea" id="N-ariadne" data-status="idea"><div class="name">Ariadne</div><p>Her thread guides through the labyrinth: data as the thread through the maze of symptoms.</p></article>
+  <article class="patch st-idea" id="N-argo" data-status="idea"><div class="name">Argo</div><p>Many heroes, one ship, a shared quest.</p></article>
+  <article class="patch st-idea" id="N-murmuration" data-status="idea"><div class="name">Murmuration</div><p>Thousands of starlings moving as one; swarm intelligence.</p></article>
+  <article class="patch st-idea" id="N-ballot" data-status="idea"><div class="name">Ballot</div><p>Every check-in is a vote cast.</p></article>
+  <article class="patch st-idea" id="N-caucus" data-status="idea"><div class="name">Caucus</div><p>A group organising around a shared cause.</p></article>
+  <article class="patch st-idea" id="N-mandate" data-status="idea"><div class="name">Mandate</div><p>The data gives research a mandate to act.</p></article>
+  <article class="patch st-idea" id="N-datum" data-status="idea"><div class="name">Datum</div><p>The singular of data: your one entry.</p></article>
+  <article class="patch st-idea" id="N-cohort" data-status="idea"><div class="name">Cohort</div><p>The scientific word for a study group you belong to.</p></article>
+  <article class="patch st-idea" id="N-tinkerself" data-status="idea"><div class="name">Tinkerself</div><p>A small workshop for your own body. Variant: Selftinker.</p></article>
+  <article class="patch st-idea" id="N-hunchwise" data-status="idea"><div class="name">Hunchwise</div><p>A hunch that turns into knowing.</p></article>
+  <article class="patch st-idea" id="N-curiosome" data-status="idea"><div class="name">Curiosome</div><p>Half curious, half genome.</p></article>
+  <article class="patch st-idea" id="N-mettle" data-status="idea"><div class="name">Mettle</div><p>Sounds like "me", means grit.</p></article>
+  <article class="patch st-idea" id="N-tryly" data-status="idea"><div class="name">Tryly</div><p>Short and bouncy, from "try".</p></article>
+  <article class="patch st-idea" id="N-whatworks" data-status="idea"><div class="name">Whatworks</div><p>Literally the question being answered.</p></article>
+  <article class="patch st-idea" id="N-sample-of-one" data-status="idea"><div class="name">Sample of One</div><p>The n-of-1 idea in plain words. Variant: Study of One.</p></article>
+  <article class="patch st-idea" id="N-melab" data-status="idea"><div class="name">MeLab</div><p>Your own lab.</p></article>
+  <article class="patch st-idea" id="N-selftrial" data-status="idea"><div class="name">Selftrial</div><p>Variants: OwnTrial, Trial and Me. Same "trial" problem as N Trials.</p></article>
+</div>
+</section>
+
+<section id="taken">
+<h2>Taken</h2>
+<div class="quilt">
+  <article class="patch st-taken" id="N-check-ins" data-status="taken"><div class="name">Check-ins</div><p>App Store: social app for café and restaurant visits. Crowded with event check-in tools.</p></article>
+  <article class="patch st-taken" id="N-n1" data-status="taken"><div class="name">N1</div><p>Mount Sinai's N-of-1 app (2019), same concept.</p></article>
+  <article class="patch st-taken" id="N-studyme" data-status="taken"><div class="name">StudyMe</div><p>HPI Potsdam N-of-1 app, Google Play, same niche.</p></article>
+  <article class="patch st-taken" id="N-hunch" data-status="taken"><div class="name">Hunch</div><p>Short real word, taken.</p></article>
+  <article class="patch st-taken" id="N-hunchlab" data-status="taken"><div class="name">Hunchlab</div><p>Predictive-policing software. Unwanted association.</p></article>
+</div>
+</section>
+
+<section id="rejected">
+<h2>Rejected</h2>
+<div class="quilt">
+  <article class="patch st-rej" id="N-forest" data-status="rejected"><div class="name">Rootcause</div><p>Also Sharewood, Commonroot, Rainroot, Dropwise. Reason: too forest or tribal.</p></article>
+  <article class="patch st-rej" id="N-study-me-cfs" data-status="rejected"><div class="name">Study ME/CFS</div><p>Reason: sounds like a research study, too descriptive to protect, slash breaks URLs.</p></article>
+</div>
+</section>
+
+<footer>Edit rule: change <code>data-status</code> and move the patch to its section; never delete. Record date and method of every availability check. Last updated 3 Nov 2026.</footer>
+</div>
+</body>
+</html>
