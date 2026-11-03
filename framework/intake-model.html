@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily intake model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F8FF; --surface:#FFFFFF; --ink:#14213D; --muted:#4A5878; --rule:#CFDCF0;
+  --blue:#1F6FEB; --blue-soft:#E3EEFF; --sage:#0E8A61; --sage-soft:#DCF7EC;
+  --amber:#B36F00; --amber-soft:#FFF1D6; --rose:#D61F55; --rose-soft:#FFE3EC;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 "Literata",Georgia,serif}
+h1,h2,h3,.crumbs,.lead,.meta,dt,svg text,.app span{font-family:"Atkinson Hyperlegible",system-ui,sans-serif}
+a{color:var(--blue)}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:3px}
+.wrap{max-width:960px;margin:0 auto;padding:40px 16px 80px}
+.crumbs{font-size:15px;margin-bottom:28px}
+h1{font-size:clamp(34px,5vw,52px);line-height:1.08;margin:0 0 14px;letter-spacing:-.01em}
+.lead{font-size:20px;line-height:1.5;color:var(--muted);max-width:62ch;margin:0}
+.summary{margin:28px 0 40px;padding:20px 24px;background:var(--surface);border-left:4px solid var(--blue);font-size:21px;line-height:1.55;max-width:70ch}
+h2{font-size:26px;margin:44px 0 12px}
+figure{margin:0;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px 16px 10px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-family:"Atkinson Hyperlegible",sans-serif;font-size:15px;color:var(--muted);margin-top:8px}
+.term{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:16px 22px;margin-bottom:10px;scroll-margin-top:20px}
+.term h3{margin:0 0 4px;font-size:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.term h3 code{font:400 13px "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.term p{margin:0 0 6px;max-width:72ch}
+.app{padding-left:14px;border-left:2px solid var(--rule)}
+.app span{font-weight:700;font-size:15px;margin-right:6px}
+.vals{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;padding:0;list-style:none}
+.vals li{font-family:"Atkinson Hyperlegible",sans-serif;font-size:15px;background:var(--blue-soft);color:var(--blue);padding:3px 11px;border-radius:999px}
+footer{margin-top:40px;font-family:"Atkinson Hyperlegible",sans-serif;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">EMA tracker presentations</a></nav>
+
+<h1>Daily intake model</h1>
+<p class="lead">How the app knows what was taken on any given day, with as little logging as possible.</p>
+
+<p class="summary" id="summary">The daily intake is calculated from the version history of each plan. Every plan has a type (ongoing or block) and a rhythm (daily, weekdays or every N days), and any deviations from the plan are logged as events.</p>
+
+<h2>One plan, two versions, two deviations</h2>
+<figure>
+<svg viewBox="0 0 760 250" role="img" aria-labelledby="tl-title tl-desc">
+  <title id="tl-title">Timeline of a plan with two versions</title>
+  <desc id="tl-desc">A plan with rhythm every 2 days. Version 1 at 5 mg is valid on days 1 to 4, version 2 at 7.5 mg from day 5. The calculated intake is days 1, 3, 5, 7, 9 and 11. A skip on day 7 and an extra on day 8 give the actual intake.</desc>
+  <g font-size="14" fill="#4A5878">
+    <text x="0" y="45">Versions</text>
+    <text x="0" y="100">Calculated</text>
+    <text x="0" y="155">Deviations</text>
+    <text x="0" y="210">Actual</text>
+  </g>
+  <!-- day grid -->
+  <g stroke="#CFDCF0" stroke-width="1">
+    <line x1="120" y1="20" x2="120" y2="225"/><line x1="172" y1="20" x2="172" y2="225"/><line x1="224" y1="20" x2="224" y2="225"/><line x1="276" y1="20" x2="276" y2="225"/><line x1="328" y1="20" x2="328" y2="225"/><line x1="380" y1="20" x2="380" y2="225"/><line x1="432" y1="20" x2="432" y2="225"/><line x1="484" y1="20" x2="484" y2="225"/><line x1="536" y1="20" x2="536" y2="225"/><line x1="588" y1="20" x2="588" y2="225"/><line x1="640" y1="20" x2="640" y2="225"/><line x1="692" y1="20" x2="692" y2="225"/>
+  </g>
+  <g font-size="13" fill="#4A5878" text-anchor="middle">
+    <text x="120" y="244">1</text><text x="172" y="244">2</text><text x="224" y="244">3</text><text x="276" y="244">4</text><text x="328" y="244">5</text><text x="380" y="244">6</text><text x="432" y="244">7</text><text x="484" y="244">8</text><text x="536" y="244">9</text><text x="588" y="244">10</text><text x="640" y="244">11</text><text x="692" y="244">12</text>
+  </g>
+  <!-- versions: half-open intervals -->
+  <rect x="100" y="27" width="202" height="28" rx="6" fill="#E3EEFF" stroke="#1F6FEB"/>
+  <text x="112" y="46" font-size="14" fill="#14213D">v1 · 5 mg</text>
+  <rect x="306" y="27" width="414" height="28" rx="6" fill="#1F6FEB"/>
+  <text x="318" y="46" font-size="14" fill="#FFFFFF">v2 · 7.5 mg, valid from day 5</text>
+  <!-- calculated: every 2 days -->
+  <g fill="#1F6FEB">
+    <circle cx="120" cy="95" r="8" fill="#E3EEFF" stroke="#1F6FEB" stroke-width="2"/><circle cx="224" cy="95" r="8" fill="#E3EEFF" stroke="#1F6FEB" stroke-width="2"/>
+    <circle cx="328" cy="95" r="9"/><circle cx="432" cy="95" r="9"/><circle cx="536" cy="95" r="9"/><circle cx="640" cy="95" r="9"/>
+  </g>
+  <!-- deviations -->
+  <g>
+    <rect x="410" y="137" width="44" height="26" rx="13" fill="#FFE3EC"/><text x="432" y="155" font-size="13" text-anchor="middle" fill="#D61F55">skip</text>
+    <rect x="460" y="137" width="48" height="26" rx="13" fill="#DCF7EC"/><text x="484" y="155" font-size="13" text-anchor="middle" fill="#0E8A61">extra</text>
+  </g>
+  <!-- actual -->
+  <g fill="#14213D">
+    <circle cx="120" cy="205" r="8" fill="#FFFFFF" stroke="#14213D" stroke-width="2"/><circle cx="224" cy="205" r="8" fill="#FFFFFF" stroke="#14213D" stroke-width="2"/>
+    <circle cx="328" cy="205" r="9"/><circle cx="484" cy="205" r="9" fill="#0E8A61"/><circle cx="536" cy="205" r="9"/><circle cx="640" cy="205" r="9"/>
+  </g>
+</svg>
+<figcaption>Rhythm every 2 days, anchored at day 1. Version 1 covers days 1–4, version 2 starts on day 5. Only the skip on day 7 and the extra on day 8 were logged; everything else follows from the plan.</figcaption>
+</figure>
+
+<h2>Terms</h2>
+
+<article class="term" id="P-plan" data-origin="project">
+<h3>Plan <code>P-plan</code></h3>
+<p>One protocol, e.g. "Epitalon 5 mg every other day". The user's term in the app is plan or protocol.</p>
+</article>
+
+<article class="term" id="P-type" data-origin="project">
+<h3>Type <code>P-type</code></h3>
+<ul class="vals"><li>ongoing</li><li>block</li><li>as needed</li></ul>
+<p><strong>Ongoing</strong> has a start date and no planned end. <strong>Block</strong> has a fixed start and end date and ends by itself; a new block is created manually. <strong>As needed</strong> (PRN) has no rhythm: it is a preconfigured template, and every intake is logged as an event.</p>
+</article>
+
+<article class="term" id="P-rhythm" data-origin="project">
+<h3>Rhythm <code>P-rhythm</code></h3>
+<ul class="vals"><li>daily</li><li>weekdays</li><li>every N days</li></ul>
+<p>When the plan prescribes an intake. "Weekdays" means selected days of the week; "every N days" counts from the start date.</p>
+</article>
+
+<article class="term" id="P-version" data-origin="project">
+<h3>Version <code>P-version</code></h3>
+<p>Every change to a plan creates a new version instead of overwriting the old one. Each version has a <strong>valid from</strong> date and stays valid until the next version begins. Together the versions form the plan's history.</p>
+<p class="app"><span>Precise</span>Validity is a half-open interval: v1 from day 1 up to but excluding day 5, v2 from day 5. No day ever belongs to two versions.</p>
+</article>
+
+<article class="term" id="P-calculated-intake" data-origin="project">
+<h3>Calculated intake <code>P-calculated-intake</code></h3>
+<p>What the version active on a given day prescribes, according to its rhythm and dose. Computed, never logged.</p>
+</article>
+
+<article class="term" id="P-deviation" data-origin="project">
+<h3>Deviation <code>P-deviation</code></h3>
+<ul class="vals"><li>skip</li><li>extra</li></ul>
+<p>An event the user logs when reality differs from the plan. Only deviations need input, which keeps logging effort minimal.</p>
+</article>
+
+<article class="term" id="P-actual-intake" data-origin="project">
+<h3>Actual intake <code>P-actual-intake</code></h3>
+<p>Calculated intake plus and minus the logged deviations. This is the value used in analysis.</p>
+</article>
+
+<footer>Project terms, IDs <code>P-…</code>. Related: <a href="vocabulary.html">domain vocabulary</a>. Last updated 3 Nov 2026.</footer>
+</div>
+</body>
+</html>
