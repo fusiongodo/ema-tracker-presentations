@@ -25,6 +25,10 @@ h1{font-size:clamp(36px,6vw,58px);line-height:1.05;margin:0 0 16px;letter-spacin
 .card p{margin:0}
 .card .what{font-size:14px;color:var(--muted);margin-top:10px}
 h2.sec{font-size:24px;margin:48px 0 12px}
+.gen{font-family:"Atkinson Hyperlegible",sans-serif;color:var(--muted);margin:0 0 14px;max-width:70ch}
+.gen code{font-size:15px}
+.card.ro{border-style:dashed}
+.card.ro h2::after{content:" (read-only)";font-size:14px;font-weight:400;color:var(--muted)}
 ul.decks{padding-left:20px}
 ul.decks li{margin-bottom:8px}
 </style>
@@ -38,6 +42,15 @@ ul.decks li{margin-bottom:8px}
 <div class="grid">
   <a class="card" href="framework/vocabulary.html"><h2>Domain vocabulary</h2><p>Five layers, from why people share data down to how a symptom is measured.</p><p class="what">framework/vocabulary.html</p></a>
   <a class="card" href="branding/names.html"><h2>App name proposals</h2><p>Shortlist, liked, free, taken and rejected names, with reasons and checks.</p><p class="what">branding/names.html</p></a>
+</div>
+
+<h2 class="sec">From the symptom-tree repo</h2>
+<p class="gen">Script outputs, read-only here. To change them, change the source in <code>symptom-tree</code> and run <code>scripts/sync-generated.sh</code>.</p>
+<div class="grid">
+  <a class="card ro" href="generated/symptom-tree/theory.html"><h2>Theory</h2><p>Measurement model: from check-in score to instrument item.</p><p class="what">generated/symptom-tree/theory.html</p></a>
+  <a class="card ro" href="generated/symptom-tree/mapping-explorer.html"><h2>Mapping explorer</h2><p>Browse granules, leaves, drawers and instrument items.</p><p class="what">generated/symptom-tree/mapping-explorer.html</p></a>
+  <a class="card ro" href="generated/symptom-tree/theory-poster.svg"><h2>Theory poster</h2><p>The measurement model on one page.</p><p class="what">generated/symptom-tree/theory-poster.svg</p></a>
+  <a class="card ro" href="generated/symptom-tree/mecfs-tree.svg"><h2>ME/CFS tree</h2><p>The full question tree as a diagram.</p><p class="what">generated/symptom-tree/mecfs-tree.svg</p></a>
 </div>
 
 <h2 class="sec">Presentations</h2>

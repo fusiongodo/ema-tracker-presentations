@@ -10,6 +10,11 @@ Open **`index.html`** in a browser. All pages are self-contained HTML (inline CS
 | `framework/vocabulary.html` | Domain vocabulary in 5 layers (community → study design → data collection → measurement → disease context) |
 | `branding/names.html` | App name proposals with status, rationale, risks and availability checks |
 | `presentations/<slug>/` | One folder per presentation: PDF + speaker notes |
+| `generated/symptom-tree/` | **Read-only** script outputs from the `symptom-tree` repo (theory, poster, tree, mapping explorer) |
+
+## generated/ is read-only
+
+Never edit files in `generated/`. Change the source in `symptom-tree`, then run `scripts/sync-generated.sh ../symptom-tree` and commit with `sync: …`. The CI check `protect-generated` compares every file against `generated/SHA256SUMS` and fails on any hand edit.
 
 ## Conventions (for editing, mostly by Claude)
 
